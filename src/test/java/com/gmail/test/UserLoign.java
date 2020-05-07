@@ -26,16 +26,14 @@ public static ExtentReports report;
     @BeforeTest
     public static void startTest()
     {
-        //report = new ExtentReports(System.getProperty("user.dir")+"\\ExtentReportResults.html");
-
-       // test = report.startTest("UserLoign");
+		System.setProperty("webdriver.chrome.driver", "D:\\ExeandJars\\chromedriver\\chromedriver.exe");
+		driver = new ChromeDriver();
     }
 	@Test
 	public static void gmailLogin()
  {
 		// TODO Auto-generated method stub
-		System.setProperty("webdriver.chrome.driver", "D:\\ExeandJars\\chromedriver\\chromedriver.exe");
-		driver = new ChromeDriver();
+
 	    logger.info("Driver Initialized");
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
