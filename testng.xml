@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Main Test Suite" verbose="5">
+
+<parameter name="OS" value="Windows"/>
+<parameter name="browser" value="Chrome"/>
+
+  <test name="GmailandExtent">
+   <classes>
+     <class name="com.gmail.test.BasicExtentReport"/>
+       <class name="com.gmail.test.UserLoign"/>
+    </classes>
+  </test>
+
+ <!-- Test -->
+</suite> <!-- Suite -->
