@@ -8,8 +8,7 @@
 
   <test name="GmailandExtent">
    <classes>
-     <class name="com.gmail.test.BasicExtentReport"/>
-       <class name="com.gmail.test.UserLoign"/>
+     <class name="com.gmail.test.UserLoign"/>
     </classes>
   </test>
 

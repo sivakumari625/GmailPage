@@ -1,5 +1,6 @@
 package com.gmail.test;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -13,41 +14,49 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import org.apache.log4j.Logger;
 import org.testng.asserts.IAssert;
+import utilities.base;
 
-public class UserLoign {
-	static Logger logger = Logger.getLogger(UserLoign.class);
-	public static WebDriver driver;
-public static ExtentReports report;
-	public static ExtentTest test;
-    @BeforeTest
-    public static void startTest()
-    {
-        //report = new ExtentReports(System.getProperty("user.dir")+"\\ExtentReportResults.html");
+import static utilities.ScreenShot.takeSnapShot;
 
-       // test = report.startTest("UserLoign");
+public class UserLoign extends base implements LoginInterface {
+    static Logger logger = Logger.getLogger(UserLoign.class);
+    public static WebDriver driver;
+    public static ExtentReports report;
+    public static ExtentTest test;
+
+    @BeforeClass
+    public static void startTest() throws IOException {
+        driver = initializedriver();
+        logger.info("DRIVER INITIALIZED and url opend>>>");
     }
-	@Test
-	public static void gmailLogin()
- {
-		// TODO Auto-generated method stub
-		System.setProperty("webdriver.chrome.driver", "D:\\ExeandJars\\chromedriver\\chromedriver.exe");
-		driver = new ChromeDriver();
-	    logger.info("Driver Initialized");
-		driver.manage().window().maximize();
-		driver.manage().deleteAllCookies();
-		driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-		driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
-		driver.get("http://demo.guru99.com");
-		String title = driver.getTitle();
-	    logger.info("Title : " + title);
-        Assert.assertTrue(title.contains("Guru"));
 
+    @Test
+    public static void gmailLogin() {
+        // TODO Auto-generated method stub
+        String title = driver.getTitle();
+        logger.info("Title : " + title);
+        Assert.assertTrue(title.contains("Facebook"));
+        takeSnapShot(driver, "SShot");
+    }
 
-      	driver.quit();
+    @Test
+    @Override
+    public void login() {
+        String uname = "FaceBookUser";
+        logger.info("User Name is : " + uname);
+        String name = LoginInterface.Iuname;
+        logger.info("Interface Constant Variable : " + name);
+    }
 
-	}
+    @Override
+    public void clicklogin() {
+    }
+
+    @AfterClass
+    public void tearDown() {
+        driver.quit();
+    }
 }
