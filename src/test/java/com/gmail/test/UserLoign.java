@@ -18,7 +18,7 @@ import org.testng.annotations.Test;
 import org.apache.log4j.Logger;
 import org.testng.asserts.IAssert;
 
-public class UserLoign {
+public class UserLoign implements LoginInterface {
 	static Logger logger = Logger.getLogger(UserLoign.class);
 	public static WebDriver driver;
 public static ExtentReports report;
@@ -26,16 +26,14 @@ public static ExtentReports report;
     @BeforeTest
     public static void startTest()
     {
-        //report = new ExtentReports(System.getProperty("user.dir")+"\\ExtentReportResults.html");
-
-       // test = report.startTest("UserLoign");
+		System.setProperty("webdriver.chrome.driver", "D:\\ExeandJars\\chromedriver\\chromedriver.exe");
+		driver = new ChromeDriver();
     }
 	@Test
 	public static void gmailLogin()
  {
 		// TODO Auto-generated method stub
-		System.setProperty("webdriver.chrome.driver", "D:\\ExeandJars\\chromedriver\\chromedriver.exe");
-		driver = new ChromeDriver();
+
 	    logger.info("Driver Initialized");
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
@@ -50,4 +48,15 @@ public static ExtentReports report;
       	driver.quit();
 
 	}
+	@Test
+    @Override
+    public void login() {
+     String uname="FaceBookUser";
+		logger.info("User Name is : "+ uname);
+    }
+
+    @Override
+    public void clicklogin() {
+
+    }
 }
