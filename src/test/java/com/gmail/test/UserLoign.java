@@ -2,7 +2,6 @@ package com.gmail.test;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
@@ -18,9 +17,9 @@ import org.testng.annotations.*;
 import org.apache.log4j.Logger;
 import org.testng.asserts.IAssert;
 import utilities.base;
-
 import static utilities.ScreenShot.takeSnapShot;
 
+                      //$$$$$$$Adding one comment  line in DEV-TEST Branch to work on Rebase Command$$$$$$$$$$$$$
 public class UserLoign extends base implements LoginInterface {
     static Logger logger = Logger.getLogger(UserLoign.class);
     public static WebDriver driver;
@@ -30,7 +29,7 @@ public class UserLoign extends base implements LoginInterface {
     @BeforeClass
     public static void startTest() throws IOException {
         driver = initializedriver();
-        logger.info("DRIVER INITIALIZED and url opend>>>");
+        logger.info("<<<DRIVER INITIALIZED and url opend>>>");
     }
 
     @Test
