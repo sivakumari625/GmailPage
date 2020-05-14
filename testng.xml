@@ -6,11 +6,11 @@
 <parameter name="OS" value="Windows"/>
 <parameter name="browser" value="Chrome"/>
 
-  <test name="GmailandExtent">
+  <test name="Gmail Title Validation and Taking ScreenShot">
    <classes>
      <class name="com.gmail.test.UserLoign"/>
     </classes>
-  </test>
+    </test>
 
  <!-- Test -->
 </suite> <!-- Suite -->

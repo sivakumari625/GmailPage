@@ -1,6 +1,8 @@
 package com.gmail.test;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -13,10 +15,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import org.apache.log4j.Logger;
 import org.testng.asserts.IAssert;
+import org.testng.asserts.SoftAssert;
 import utilities.base;
 
 import static utilities.ScreenShot.takeSnapShot;
@@ -40,6 +44,7 @@ public class UserLoign extends base implements LoginInterface {
         logger.info("Title : " + title);
         Assert.assertTrue(title.contains("Facebook"));
         takeSnapShot(driver, "SShot");
+
     }
 
     @Test
@@ -51,12 +56,20 @@ public class UserLoign extends base implements LoginInterface {
         logger.info("Interface Constant Variable : " + name);
     }
 
-    @Override
-    public void clicklogin() {
-    }
 
     @AfterClass
-    public void tearDown() {
-        driver.quit();
+    public void tearDown(){
+        driver.close();
     }
+
+    @Test
+
+    public void SoftAssertionTestMethod() {
+        SoftAssert sa = new SoftAssert();
+        sa.assertEquals(3, 3);
+        sa.assertEquals("FaceBook Page", "FaceBook Page");
+        sa.assertAll();
+        logger.info("I am in SoftAssert MEthod");
+    }
+
 }

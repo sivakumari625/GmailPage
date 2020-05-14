@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -15,14 +16,17 @@ public class base {
     public static WebDriver initializedriver() throws IOException {
         // TODO Auto-generated method stub
 
-        FileInputStream fio = new FileInputStream(
-                "D:\\Siva-SeliniumWorkSpace\\GmailPage\\src\\main\\resources\\config.properties");
+
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
+        InputStream stream = loader.getResourceAsStream("config.properties");
+        //FileInputStream fio = new FileInputStream("D:\\Siva-SeliniumWorkSpace\\GmailPage\\src\\main\\resources\\config.properties");
         Properties prop = new Properties();
-        prop.load(fio);
+        prop.load(stream);
         String br = prop.getProperty("browser");
         logger.info("Browser:" + br);
         if (br.equals("chrome")) {
             System.setProperty("webdriver.chrome.driver", "D:\\ExeandJars\\chromedriver\\chromedriver.exe");
+            // //System.setProperty("webdriver.chrome.driver", "./resources//chromedriver.exe");
             driver = new ChromeDriver();
         }
         driver.manage().window().maximize();
